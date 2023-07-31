@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="light.css">
+    <title>Document</title>
+</head>
+<body>
+    <section class="background" id="background">
+        <div>
+            <div class="list">
+                <div class="header">
+                    <h1>T O D O</h1>
+                    <div class="image">
+                        <img src="./images/icon-moon.svg" alt="" onclick="darkMode()">
+                    </div>
+                </div>
+    
+                <div class="input-container">
+                <div onclick="submit()" class="enter"></div>
+                <input type="text" id="new-input" class="input" placeholder="Create a new todo...">
+    
+                </div>
+    
+                <div class="house">
+                    <ul>
+                        <li><span class="spin"></span>go to gym</li>
+                        <li><span class="spin"></span>jog for 3 minutes</li>
+                        
+                    </ul>
+                    <div class="last">
+                        <div class="foot">5 items left</div>
+                        <div class="inside">
+                            <div class="foot">All</div>
+                            <div class="foot">Active</div>
+                            <div class="foot">Completed</div>
+                        </div>
+                        <div class="foot" id="end">Clear Completed</div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+</body>
+<script>
+    mainLi = document.getElementsByTagName('li');
+
+    for (let i = 0; i < mainLi.length; i++) {
+  let span = document.createElement("span");
+  let tt = document.createElement('img');
+  tt.setAttribute('src', './images/icon-cross.svg')
+  span.className= 'close';
+  span.appendChild(tt);
+  mainLi[i].appendChild(span);
+  
+}
+ let close = document.getElementsByClassName("close");
+for (let i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    let div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+   function submit(){
+    li= document.createElement('li')
+    spans= document.createElement('span')
+    spans.className= 'spin'
+    newInput =document.getElementById('new-input').value;
+    text = document.createTextNode(newInput)
+    li.appendChild(spans);
+    li.appendChild(text);
+    if(newInput ===""){
+        alert('field cannot be empty')
+    }
+    else{
+        ul= document.querySelector('ul');
+    ul.appendChild(li);
+    }
+    document.getElementById("new-input").value = "";
+
+    
+    let span = document.createElement("span");
+  let tt = document.createElement('img');
+  tt.setAttribute('src', './images/icon-cross.svg')
+  span.className= 'close';
+  span.appendChild(tt);
+  li.appendChild(span);
+
+
+
+for (let i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    let div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+    
+   }
+
+   //adding check button
+   let allNodes = document.querySelector('ul');
+   allNodes.addEventListener("click",  (lists)=> {
+  if (lists.target.tagName === 'LI') {
+    lists.target.classList.toggle('checked');
+    // let im = document.createElement('img');
+    // im.setAttribute('src', './images/icon-check.svg');
+    // spans.appendChild(im);
+  }
+}, false);  
+    
+
+    //delete all
+    let delte= document.getElementById('end');
+//     for (let i = 0; i < close.length; i++) {
+//   close[i].onclick = function() {
+//     let div = this.parentElement;
+//     div.style.display = "none";
+//   }
+// }
+
+// function delet(){
+//     complete= getElementsByClassName('checked');
+//     for (let i = 0; i < complete.length; i++) {
+//   delte.onclick = function() {
+    
+//     complete[i].style.display = "none";
+// }
+//     }
+
+    function darkMode() {
+   let dark = document.getElementById('background');
+   if (dark.className === "background"){
+    dark.className = "background2";
+   } else{
+    dark.className = "background";
+   }
+//    element.classList.toggle(".body");
+    }
+
+    
+    
+</script>
+</html>
